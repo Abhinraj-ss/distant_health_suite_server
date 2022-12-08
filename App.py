@@ -14,7 +14,7 @@ def favicon():
 
 @app.route("/test",methods=['POST'])
 def hello_world():
-    content =  request.get_json()
+    content =  request.get_data()
     print(content)
     return "Hello, World!",200
 
