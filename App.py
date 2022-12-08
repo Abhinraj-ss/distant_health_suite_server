@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,request
 from flask_cors import CORS
 import os
 from flask import send_from_directory
@@ -11,8 +11,14 @@ CORS(app)
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
-                               
-@app.route("/",methods=['POST','GET'])
+
+@app.route("/test",methods=['POST'])
 def hello_world():
-    print("printing to console")
-    return "<p>Hello, World!</p>",200
+    content =  request.get_json()
+    print(content)
+    return "Hello, World!",200
+
+
+if __name__ == '__main__':
+  print('\nstarting...')
+  app.run(debug=True)
