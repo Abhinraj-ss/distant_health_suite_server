@@ -12,7 +12,7 @@ def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-@app.route("/test",methods=['POST'])
+@app.route("/test",methods=['POST','GET'])
 def hello_world():
     content =  request.get_data()
     print(content)
