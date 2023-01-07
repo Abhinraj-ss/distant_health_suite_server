@@ -1,6 +1,6 @@
 
 from flask import Flask,request
-from flask_cors import CORS
+from flask_cors import CORS,cross_origin
 import psycopg2,os,secrets,string
 from flask import send_from_directory
 from werkzeug.security import check_password_hash,generate_password_hash
@@ -10,7 +10,7 @@ Host = "b87clogurgswprpe6rob-postgresql.services.clever-cloud.com"
 Database = "b87clogurgswprpe6rob"
 User = "ujinfmddr21fx2lz7awm"
 Port= 5432
-Password = "uI6BVxos1w1rTMJ0PckK"
+Password = "TilJ3xqMndLEsPBMCXxE"
 
 app = Flask(__name__)
 CORS(app)
@@ -72,6 +72,7 @@ def hello_world():
     return "Hello, World!",200
 
 @app.route("/register",methods=['POST'])
+@cross_origin()
 def register():
     data = request.get_json()
     conn = connectDB()
@@ -88,6 +89,7 @@ def register():
     return "Success",200
 
 @app.route("/login",methods=['POST'])
+@cross_origin()
 def login():
     data = request.get_json()
     print(data)
