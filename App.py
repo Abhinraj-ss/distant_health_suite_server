@@ -97,6 +97,7 @@ def login():
     cur = conn.cursor()
     cur.execute("SELECT * FROM doctors WHERE email=%s",(data['email'],))
     drData = cur.fetchone()
+    print(drData)
     if(drData != None and check_password_hash(drData[3],data["password"])):
         conn.close()
         return "User found!!",200
